@@ -1,15 +1,15 @@
-x = input('Enter your name:  ')
-print('Welcome to Calculator, ' + x)
+x = input('Digite seu nome:  ')
+print('Bem-vindo à Calculadora, ' + x)
 
-ope = input('Enter the desired mathematical operation (+, -, * or /): ')
+ope = input('Insira a operação matemática desejada (+, -, * or /): ')
 
 while True:
     try:
-        num1 = float(input('Enter the first number of the operation: '))
-        num2 = float(input('Enter the second number of the operation: '))
+        num1 = float(input('Insira o primeiro número da operação: '))
+        num2 = float(input('Insira o segundo número da operação: '))
         break
     except ValueError:
-        print("Oops!  That was no valid number.  Try again...")
+        print("Oops!  Esse não era um número válido.  Tente novamente...")
                
             
 if ope in ['+']:
