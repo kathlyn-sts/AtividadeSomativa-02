@@ -1,10 +1,11 @@
 name: Continuous Delivery
 on:
-  branches:
+  push:
+    branches:
       - main # ou qualquer outra branck
 
 jobs:
-  delivery:
+  deliver:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
