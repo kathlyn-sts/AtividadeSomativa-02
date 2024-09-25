@@ -1,5 +1,5 @@
 import pytest
-from calculadora import calculadora
+from src.calculadora import calculadora  # Ajuste para refletir o caminho correto
 
 class TestCalculadora:
 
