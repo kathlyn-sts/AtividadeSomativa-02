@@ -28,6 +28,10 @@ jobs:
         with:
           python-version: '3.12'
 
+      # Adiciona o diretorio src ao PYTHONPATH
+      - name: Add src to PYTHONPATH
+        run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)/src" >> $GITHUB_ENV
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -35,4 +39,4 @@ jobs:
 
       - name: Run tests with pytest
         run: |
-          pytest test/test.py --doctest-modules --junitxml=junit/test-results.xml --cov=src --cov-report=xml --cov-report=html
+          pytest test/test.py --doctest-modules --
