@@ -9,7 +9,7 @@ while True:
         num2 = float(input('Insira o segundo número da operação: '))
         break
     except ValueError:
-        print("Oops!  Esse não era um número válido.  Tente novamente...")
+        print("Oops!  Esse não era um número válido.   Tente novamente...")
                
             
 if ope in ['+']:
