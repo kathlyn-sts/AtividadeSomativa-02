@@ -1,7 +1,7 @@
 # tests/test_calculadora.py
 
 import unittest
-from src.main import calculadora
+from src.main import calculadora  # Verifique se o caminho está correto
 
 class TestCalculadora(unittest.TestCase):
 

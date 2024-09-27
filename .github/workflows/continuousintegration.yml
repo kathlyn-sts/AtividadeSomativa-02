@@ -1,6 +1,4 @@
-# .github/workflows/ci.yml
-
-name: CI
+name: Continuous integration
 
 on:
   push:
@@ -16,18 +14,20 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
-          python-version: '3.8'
+          python-version: '3.8'  # Verifique se a versão do Python está correta para o seu projeto
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements.txt  # Certifique-se de que o requirements.txt está configurado corretamente
 
       - name: Run tests
         run: |
-          python -m unittest tests/test_calculadora.py -v  # Execute apenas o arquivo test_calculadora.py
+          python -m unittest discover -s test -v  # Descobre e executa todos os testes na pasta 'test'
+          # Se você quiser rodar apenas um arquivo específico, comente a linha acima e descomente a linha abaixo
+          # python -m unittest test/test_calculadora.py -v  # Execute apenas o arquivo test_calculadora.py
