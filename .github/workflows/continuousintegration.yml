@@ -1,6 +1,4 @@
-# .github/workflows/ci.yml
-
-name: CI
+name: Continuous integration
 
 on:
   push:
@@ -16,7 +14,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v2
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -30,4 +28,4 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m unittest test.test_calculadora -v  # Execute o módulo de teste
+          python -m unittest discover -s test -v  # Corrigido para a pasta 'test'
