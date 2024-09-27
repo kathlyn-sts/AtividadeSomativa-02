@@ -14,7 +14,7 @@ jobs:
 
     strategy:
       matrix:
-        python-version: [3.8, 3.9, 3.10, 3.12]
+        python-version: [3.8, 3.9, 3.10, 3.11]  # Remova 3.1 e use versões suportadas
 
     steps:
     - uses: actions/checkout@v3
@@ -32,7 +32,7 @@ jobs:
 
     - name: Run tests with coverage
       run: |
-        pytest --doctest-modules --junitxml=junit/test-results.xml --cov=src --cov-report=xml --cov-report=html
+        pytest --doctest-modules --junitxml=junit/test/results.xml --cov=src --cov-report=xml --cov-report=html
       env:
         CI: true
 
