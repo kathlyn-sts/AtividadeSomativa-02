@@ -1,4 +1,6 @@
-def calculadora(num1, num2, ope): 
+# src/main.py
+
+def calculadora(num1, num2, ope):
     if ope == '+':
         return num1 + num2
     elif ope == '-':

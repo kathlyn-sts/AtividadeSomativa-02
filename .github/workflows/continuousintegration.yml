@@ -28,4 +28,6 @@ jobs:
 
       - name: Run tests
         run: |
-          python -m unittest discover -s test -v  # Descobre e executa testes na pasta 'test'
+          python -m unittest discover -s test -v  # Descobre e executa todos os testes na pasta 'test'
+          # Se você quiser rodar apenas um arquivo específico, comente a linha acima e descomente a linha abaixo
+          # python -m unittest test/test_calculadora.py -v  # Execute apenas o arquivo test_calculadora.py
