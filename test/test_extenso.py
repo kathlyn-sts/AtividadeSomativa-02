@@ -1,26 +1,27 @@
-import pytest
-from main import calculadora  # Importa a função calculadora do main.py
+import unittest
+from src.main import calculadora  # Certifique-se de que o caminho está correto
 
-def test_soma():
-    resultado = calculadora(10, 5, "+")
-    assert resultado == 15
+class TestCalculadora(unittest.TestCase):
 
-def test_subtracao():
-    resultado = calculadora(10, 5, "-")
-    assert resultado == 5
+    def test_soma(self):
+        self.assertEqual(calculadora(1, 2, '+'), 3)
 
-def test_multiplicacao():
-    resultado = calculadora(10, 5, "*")
-    assert resultado == 50
+    def test_subtracao(self):
+        self.assertEqual(calculadora(5, 2, '-'), 3)
 
-def test_divisao():
-    resultado = calculadora(10, 5, "/")
-    assert resultado == 2
+    def test_multiplicacao(self):
+        self.assertEqual(calculadora(3, 2, '*'), 6)
 
-def test_divisao_por_zero():
-    with pytest.raises(ZeroDivisionError):
-        calculadora(10, 0, "/")
+    def test_divisao(self):
+        self.assertEqual(calculadora(6, 2, '/'), 3)
 
-def test_entrada_invalida():
-    with pytest.raises(ValueError):
-        calculadora(10, 5, "invalid_operation")
+    def test_divisao_por_zero(self):
+        with self.assertRaises(ValueError):
+            calculadora(5, 0, '/')
+
+    def test_operacao_invalida(self):
+        with self.assertRaises(ValueError):
+            calculadora(5, 2, '%')
+
+if __name__ == '__main__':
+    unittest.main()

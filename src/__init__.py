@@ -1,3 +1,3 @@
-- name: Run tests
-  run: |
-    python -m unittest tests.test_calculadora -v  # Especifica o módulo em vez do caminho do arquivo
+# test/__init__.py
+
+# Esse arquivo pode estar vazio ou conter código de configuração para testes
