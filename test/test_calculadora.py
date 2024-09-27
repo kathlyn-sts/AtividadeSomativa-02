@@ -9,5 +9,7 @@ class TestCalculadora(unittest.TestCase):
     def test_subtracao(self):
         self.assertEqual(calculadora(5, 2, '-'), 3)
 
+    # Adicione mais testes conforme necessário
+
 if __name__ == '__main__':
     unittest.main()
