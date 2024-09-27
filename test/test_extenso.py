@@ -1,6 +1,6 @@
 import pytest
+from src.main import calculadora 
 
-# Testes diretos da função calculadora
 def test_soma():
     resultado = calculadora(10, 5, "+")
     assert resultado == 15
@@ -21,10 +21,6 @@ def test_divisao_por_zero():
     with pytest.raises(ZeroDivisionError):
         calculadora(10, 0, "/")
 
-# Teste para simular entrada inválida
-def test_entrada_invalida(monkeypatch):
-    inputs = iter(["TestUser", "+", "dez", "5"])  # "dez" é inválido
-    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-    
+def test_entrada_invalida():
     with pytest.raises(ValueError):
-        calculadora()
+        calculadora(10, 5, "invalid_operation")
