@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3  # Atualizado para a versão mais recente
+        uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v2
@@ -26,8 +26,8 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r requirements.txt  # Aqui não deve haver 'unittest'
 
       - name: Run tests
         run: |
-          python -m unittest discover -s tests -v  # Saída detalhada
+          python -m unittest discover -s tests -v
