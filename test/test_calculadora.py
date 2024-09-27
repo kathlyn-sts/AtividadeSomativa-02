@@ -30,6 +30,7 @@ class TestCalculadora(unittest.TestCase):
 
     def test_subtracao_negativos(self):
         self.assertEqual(calculadora(-5, -2, '-'), -3)
+# novo print
 
     def test_multiplicacao_negativos(self):
         self.assertEqual(calculadora(-3, -4, '*'), 12)
