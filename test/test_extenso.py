@@ -1,25 +1,25 @@
 import pytest
 
 def test_soma():
-    with pytest.raises(SystemExit):
-        calculadora("10", "5", "+")
+    resultado = calculadora(10, 5, "+")
+    assert resultado == 15
 
 def test_subtracao():
-    with pytest.raises(SystemExit):
-        calculadora("10", "5", "-")
+    resultado = calculadora(10, 5, "-")
+    assert resultado == 5
 
 def test_multiplicacao():
-    with pytest.raises(SystemExit):
-        calculadora("10", "5", "*")
+    resultado = calculadora(10, 5, "*")
+    assert resultado == 50
 
 def test_divisao():
-    with pytest.raises(SystemExit):
-        calculadora("10", "5", "/")
+    resultado = calculadora(10, 5, "/")
+    assert resultado == 2
 
 def test_divisao_por_zero():
     with pytest.raises(ZeroDivisionError):
-        calculadora("10", "0", "/")
+        calculadora(10, 0, "/")
 
 def test_entrada_invalida():
     with pytest.raises(ValueError):
-        calculadora("dez", "5", "+") 
+        calculadora(10, 5, "invalid_operation")
