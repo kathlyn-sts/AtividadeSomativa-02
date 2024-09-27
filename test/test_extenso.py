@@ -1,5 +1,5 @@
 import pytest
-from src.main import calculadora 
+from main import calculadora  # Importa a função calculadora do main.py
 
 def test_soma():
     resultado = calculadora(10, 5, "+")
