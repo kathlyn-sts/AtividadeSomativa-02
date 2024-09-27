@@ -37,7 +37,7 @@ def test_divisao_por_zero(monkeypatch):
         calculadora()
 
 def test_entrada_invalida(monkeypatch):
-    inputs = iter(["TestUser", "+", "dez", "5"])  # "dez" é inválido
+    inputs = iter(["TestUser", "+", "dez", "5"]) 
     monkeypatch.setattr('builtins.input', lambda _: next(inputs))
 
     with pytest.raises(ValueError):
