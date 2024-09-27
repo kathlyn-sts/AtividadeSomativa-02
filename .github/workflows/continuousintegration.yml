@@ -1,42 +1,26 @@
-name: Continuous Integration
+name: CI
 
-on:
-  pull_request:
-    branches:
-      - main
+on: [push, pull_request]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.8, 3.9, 3.10, 3.11, 3.12]
     steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-        
-      - name: Python Lint Code Scanning Action
-        uses: advanced-security/python-lint-code-scanning-action@v1.1.1
-        with:
-          linter: pylint
+    - uses: actions/checkout@v3
 
-  tests:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.12'
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pytest pytest-cov
 
-      # Etapa para adicionar o diretório src ao PYTHONPATH
-      - name: Add src to PYTHONPATH
-        run: echo "PYTHONPATH=$PYTHONPATH:$(pwd)/src" >> $GITHUB_ENV
-
-      - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Run tests with pytest
-        run: |
-          pytest test/test_extenso.py --doctest-modules --junitxml=junit/test-results.xml --cov=src --cov-report=xml --cov-report=html
+    - name: Run tests
+      run: |
+        pytest test/test_extenso.py --doctest-modules --junitxml=junit/test-results.xml --cov=src --cov-report=xml --cov-report=html

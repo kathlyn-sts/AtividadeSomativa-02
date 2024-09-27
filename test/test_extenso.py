@@ -1,44 +1,25 @@
 import pytest
-from src.main import calculadora
 
-def test_soma(monkeypatch):
-    inputs = iter(["TestUser", "+", "10", "5"])
-    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-
+def test_soma():
     with pytest.raises(SystemExit):
-        calculadora()
+        calculadora("10", "5", "+")
 
-def test_subtracao(monkeypatch):
-    inputs = iter(["TestUser", "-", "10", "5"])
-    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-
+def test_subtracao():
     with pytest.raises(SystemExit):
-        calculadora()
+        calculadora("10", "5", "-")
 
-def test_multiplicacao(monkeypatch):
-    inputs = iter(["TestUser", "*", "10", "5"])
-    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-
+def test_multiplicacao():
     with pytest.raises(SystemExit):
-        calculadora()
+        calculadora("10", "5", "*")
 
-def test_divisao(monkeypatch):
-    inputs = iter(["TestUser", "/", "10", "5"])
-    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-
+def test_divisao():
     with pytest.raises(SystemExit):
-        calculadora()
+        calculadora("10", "5", "/")
 
-def test_divisao_por_zero(monkeypatch):
-    inputs = iter(["TestUser", "/", "10", "0"])
-    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-
+def test_divisao_por_zero():
     with pytest.raises(ZeroDivisionError):
-        calculadora()
+        calculadora("10", "0", "/")
 
-def test_entrada_invalida(monkeypatch):
-    inputs = iter(["TestUser", "+", "dez", "5"])  # "dez" é inválido
-    monkeypatch.setattr('builtins.input', lambda _: next(inputs))
-
+def test_entrada_invalida():
     with pytest.raises(ValueError):
-        calculadora()
+        calculadora("dez", "5", "+") 
